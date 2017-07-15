@@ -1,4 +1,4 @@
-#lang racket
+#lang scheme
 
 ;;
 (define (make-rat n d) (cons n d))
@@ -53,3 +53,14 @@
 (print-rat (add-rat one-half one-third))
 (print-rat (sub-rat one-half one-third))
 (print-rat (mul-rat one-half one-third))
+
+;; ex 2.1
+(define (improve-make-rat n d)
+  (if (> (* n d) 0) (make-rat n d)
+                    (make-rat (if (> n 0) n (* -1 n)) (abs d)))
+)
+
+;; testing
+(print-rat (improve-make-rat 1 2))
+(print-rat (improve-make-rat -1 2))
+(print-rat (improve-make-rat 1 -2))
