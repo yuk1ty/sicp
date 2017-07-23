@@ -1,0 +1,32 @@
+#lang scheme
+;; in this book, there is no expression about rnrs/mutable-pairs-6,
+;; but need to import to use 'set-car!' or 'set-cdr!'
+(require rnrs/mutable-pairs-6)
+
+(define (front-ptr queue) (car queue))
+
+(define (rear-ptr queue) (cdr queue))
+
+(define (set-front-ptr! queue item) (set-car! queue item))
+
+(define (set-rear-ptr! queue item) (set-cdr! queue item))
+
+(define (empty-queue? queue) (null? (front-ptr queue)))
+
+(define (make-queue) (cons '() '()))
+
+(define (front-queue queue)
+  (if (empty-queue? queue)
+      (error "FRONT called with an empty queue" queue)
+      (car (front-ptr queue))))
+
+(define (insert-queue! queue item)
+  (let ((new-pair (cons item '())))
+    (cond ((empty-queue? queue)
+           (set-front-ptr! queue new-pair)
+           (set-rear-ptr! queue new-pair)
+           queue)
+          (else
+           (set-cdr! (rear-ptr queue) new-pair)
+           (set-rear-ptr! queue new-pair)
+           queue))))

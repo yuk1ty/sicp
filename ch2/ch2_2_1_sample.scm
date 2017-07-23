@@ -14,3 +14,16 @@
 
 (define odds (list 1 3 5 7 9))
 (length odds)
+
+(define (scale-list items factor)
+  (if (null? items)
+      null
+      (cons (* (car items) factor)
+            (scale-list (cdr items) factor))))
+
+(scale-list (list 1 2 3 4 5) 10)
+
+#|
+(define (scale-list items factor)
+  (map (lambda (x) (* x factor)) items))
+|#
