@@ -1,5 +1,5 @@
 #lang scheme
-;; in this book, there is no expression about rnrs/mutable-pairs-6,
+;; in this book, there is no explanation about rnrs/mutable-pairs-6,
 ;; but need to import to use 'set-car!' or 'set-cdr!'
 (require rnrs/mutable-pairs-6)
 
