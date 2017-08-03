@@ -34,3 +34,14 @@
 ((acc 'withdraw) 60)
 ((acc 'deposit) 40)
 ((acc 'withdraw) 60)
+
+;; ex 3-1
+(define (make-accumulator sum)
+  (lambda (x)
+    (begin (set! sum (+ sum x))
+           sum)))
+
+;; testing 3-1
+(define A (make-accumulator 5))
+(A 10) ;; 15
+(A 10) ;; 25
